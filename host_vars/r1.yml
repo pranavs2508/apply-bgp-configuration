@@ -1,0 +1,7 @@
+---
+  host_name: r1
+  logical_systems:
+    - name: lr1
+      ip: 192.168.0.1
+    - name: lr2
+      ip: 192.168.0.2

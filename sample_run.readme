@@ -1,0 +1,338 @@
+pranavs@qnc-css-lnx02:~/segment-routing/apply-bgp$ ansible-playbook -vvv -i pes apply-bgp.yaml -e 'ansible_python_interpreter=/usr/bin/python3'
+ansible-playbook 2.5.1
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/homes/pranavs/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python2.7/dist-packages/ansible
+  executable location = /usr/bin/ansible-playbook
+  python version = 2.7.17 (default, Feb 27 2021, 15:10:58) [GCC 7.5.0]
+Using /etc/ansible/ansible.cfg as config file
+Parsed /homes/pranavs/segment-routing/apply-bgp/pes inventory source with ini plugin
+
+PLAYBOOK: apply-bgp.yaml ******************************************************************************************************************************************************************************
+1 plays in apply-bgp.yaml
+
+PLAY [Apply BGP Configuration to logical systems] *****************************************************************************************************************************************************
+META: ran handlers
+
+TASK [Confirm/Create device configuration directory] **************************************************************************************************************************************************
+task path: /homes/pranavs/segment-routing/apply-bgp/apply-bgp.yaml:14
+Using module file /usr/lib/python2.7/dist-packages/ansible/modules/files/file.py
+<localhost> ESTABLISH LOCAL CONNECTION FOR USER: pranavs
+<localhost> EXEC /bin/sh -c 'echo ~ && sleep 0'
+<localhost> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /homes/pranavs/.ansible/tmp/ansible-tmp-1632155076.81-204366046946066 `" && echo ansible-tmp-1632155076.81-204366046946066="` echo /homes/pranavs/.ansible/tmp/ansible-tmp-1632155076.81-204366046946066 `" ) && sleep 0'
+<localhost> PUT /homes/pranavs/.ansible/tmp/ansible-local-9469DYcOp1/tmpaDiFgl TO /homes/pranavs/.ansible/tmp/ansible-tmp-1632155076.81-204366046946066/file.py
+<localhost> EXEC /bin/sh -c 'chmod u+x /homes/pranavs/.ansible/tmp/ansible-tmp-1632155076.81-204366046946066/ /homes/pranavs/.ansible/tmp/ansible-tmp-1632155076.81-204366046946066/file.py && sleep 0'
+<localhost> EXEC /bin/sh -c '/usr/bin/python3 /homes/pranavs/.ansible/tmp/ansible-tmp-1632155076.81-204366046946066/file.py && sleep 0'
+<localhost> EXEC /bin/sh -c 'rm -f -r /homes/pranavs/.ansible/tmp/ansible-tmp-1632155076.81-204366046946066/ > /dev/null 2>&1 && sleep 0'
+ok: [r2 -> localhost] => {
+    "changed": false,
+    "diff": {
+        "after": {
+            "path": "tmp"
+        },
+        "before": {
+            "path": "tmp"
+        }
+    },
+    "gid": 935,
+    "group": "qa-others",
+    "invocation": {
+        "module_args": {
+            "attributes": null,
+            "backup": null,
+            "content": null,
+            "delimiter": null,
+            "diff_peek": null,
+            "directory_mode": null,
+            "follow": false,
+            "force": false,
+            "group": null,
+            "mode": null,
+            "original_basename": null,
+            "owner": null,
+            "path": "tmp",
+            "recurse": false,
+            "regexp": null,
+            "remote_src": null,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": null,
+            "state": "directory",
+            "unsafe_writes": null,
+            "validate": null
+        }
+    },
+    "mode": "0700",
+    "owner": "pranavs",
+    "path": "tmp",
+    "size": 4096,
+    "state": "directory",
+    "uid": 42626
+}
+
+TASK [Build Configuration] ****************************************************************************************************************************************************************************
+task path: /homes/pranavs/segment-routing/apply-bgp/apply-bgp.yaml:21
+<10.49.113.196> ESTABLISH LOCAL CONNECTION FOR USER: pranavs
+<10.49.113.196> EXEC /bin/sh -c 'echo ~ && sleep 0'
+<10.49.113.196> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.12-14588915243895 `" && echo ansible-tmp-1632155077.12-14588915243895="` echo /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.12-14588915243895 `" ) && sleep 0'
+<10.49.122.141> ESTABLISH LOCAL CONNECTION FOR USER: pranavs
+<10.49.122.141> EXEC /bin/sh -c 'echo ~ && sleep 0'
+<10.49.122.141> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.13-142885194870023 `" && echo ansible-tmp-1632155077.13-142885194870023="` echo /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.13-142885194870023 `" ) && sleep 0'
+Using module file /usr/lib/python2.7/dist-packages/ansible/modules/files/stat.py
+Using module file /usr/lib/python2.7/dist-packages/ansible/modules/files/stat.py
+<10.49.113.196> PUT /homes/pranavs/.ansible/tmp/ansible-local-9469DYcOp1/tmpdO8jo2 TO /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.12-14588915243895/stat.py
+<10.49.122.141> PUT /homes/pranavs/.ansible/tmp/ansible-local-9469DYcOp1/tmpx5O71F TO /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.13-142885194870023/stat.py
+<10.49.113.196> EXEC /bin/sh -c 'chmod u+x /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.12-14588915243895/ /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.12-14588915243895/stat.py && sleep 0'
+<10.49.122.141> EXEC /bin/sh -c 'chmod u+x /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.13-142885194870023/ /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.13-142885194870023/stat.py && sleep 0'
+<10.49.113.196> EXEC /bin/sh -c '/usr/bin/python3 /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.12-14588915243895/stat.py && sleep 0'
+<10.49.122.141> EXEC /bin/sh -c '/usr/bin/python3 /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.13-142885194870023/stat.py && sleep 0'
+Using module file /usr/lib/python2.7/dist-packages/ansible/modules/files/file.py
+<10.49.122.141> PUT /homes/pranavs/.ansible/tmp/ansible-local-9469DYcOp1/tmpTL2kNx TO /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.13-142885194870023/file.py
+Using module file /usr/lib/python2.7/dist-packages/ansible/modules/files/file.py
+<10.49.113.196> PUT /homes/pranavs/.ansible/tmp/ansible-local-9469DYcOp1/tmpp2ViyZ TO /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.12-14588915243895/file.py
+<10.49.122.141> EXEC /bin/sh -c 'chmod u+x /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.13-142885194870023/ /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.13-142885194870023/file.py && sleep 0'
+<10.49.113.196> EXEC /bin/sh -c 'chmod u+x /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.12-14588915243895/ /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.12-14588915243895/file.py && sleep 0'
+<10.49.122.141> EXEC /bin/sh -c '/usr/bin/python3 /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.13-142885194870023/file.py && sleep 0'
+<10.49.113.196> EXEC /bin/sh -c '/usr/bin/python3 /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.12-14588915243895/file.py && sleep 0'
+<10.49.122.141> EXEC /bin/sh -c 'rm -f -r /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.13-142885194870023/ > /dev/null 2>&1 && sleep 0'
+ok: [r3] => {
+    "changed": false,
+    "checksum": "90bd0df21ab610708ad3c27ab9fd5a7b6fa11fc7",
+    "dest": "tmp/r3.conf",
+    "diff": {
+        "after": {
+            "path": "tmp/r3.conf"
+        },
+        "before": {
+            "path": "tmp/r3.conf"
+        }
+    },
+    "gid": 935,
+    "group": "qa-others",
+    "invocation": {
+        "module_args": {
+            "attributes": null,
+            "backup": null,
+            "content": null,
+            "delimiter": null,
+            "dest": "tmp/r3.conf",
+            "diff_peek": null,
+            "directory_mode": null,
+            "follow": false,
+            "force": false,
+            "group": null,
+            "mode": null,
+            "original_basename": "bgp.j2",
+            "owner": null,
+            "path": "tmp/r3.conf",
+            "recurse": false,
+            "regexp": null,
+            "remote_src": null,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": "bgp.j2",
+            "state": "file",
+            "unsafe_writes": null,
+            "validate": null
+        }
+    },
+    "mode": "0600",
+    "owner": "pranavs",
+    "path": "tmp/r3.conf",
+    "size": 4068,
+    "state": "file",
+    "uid": 42626
+}
+<10.49.113.196> EXEC /bin/sh -c 'rm -f -r /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.12-14588915243895/ > /dev/null 2>&1 && sleep 0'
+ok: [r2] => {
+    "changed": false,
+    "checksum": "a8b19d095f1e01114b4e9a9680dc6ef03817028b",
+    "dest": "tmp/r2.conf",
+    "diff": {
+        "after": {
+            "path": "tmp/r2.conf"
+        },
+        "before": {
+            "path": "tmp/r2.conf"
+        }
+    },
+    "gid": 935,
+    "group": "qa-others",
+    "invocation": {
+        "module_args": {
+            "attributes": null,
+            "backup": null,
+            "content": null,
+            "delimiter": null,
+            "dest": "tmp/r2.conf",
+            "diff_peek": null,
+            "directory_mode": null,
+            "follow": false,
+            "force": false,
+            "group": null,
+            "mode": null,
+            "original_basename": "bgp.j2",
+            "owner": null,
+            "path": "tmp/r2.conf",
+            "recurse": false,
+            "regexp": null,
+            "remote_src": null,
+            "selevel": null,
+            "serole": null,
+            "setype": null,
+            "seuser": null,
+            "src": "bgp.j2",
+            "state": "file",
+            "unsafe_writes": null,
+            "validate": null
+        }
+    },
+    "mode": "0600",
+    "owner": "pranavs",
+    "path": "tmp/r2.conf",
+    "size": 4068,
+    "state": "file",
+    "uid": 42626
+}
+
+TASK [Apply BGP configuration] ************************************************************************************************************************************************************************
+task path: /homes/pranavs/segment-routing/apply-bgp/apply-bgp.yaml:25
+Using module file /homes/pranavs/.ansible/roles/Juniper.junos/library/juniper_junos_config.py
+<10.49.113.196> ESTABLISH LOCAL CONNECTION FOR USER: pranavs
+<10.49.113.196> EXEC /bin/sh -c 'echo ~ && sleep 0'
+Using module file /homes/pranavs/.ansible/roles/Juniper.junos/library/juniper_junos_config.py
+<10.49.122.141> ESTABLISH LOCAL CONNECTION FOR USER: pranavs
+<10.49.122.141> EXEC /bin/sh -c 'echo ~ && sleep 0'
+<10.49.113.196> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.98-89367064769152 `" && echo ansible-tmp-1632155077.98-89367064769152="` echo /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.98-89367064769152 `" ) && sleep 0'
+<10.49.122.141> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.98-149566361278558 `" && echo ansible-tmp-1632155077.98-149566361278558="` echo /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.98-149566361278558 `" ) && sleep 0'
+<10.49.113.196> PUT /homes/pranavs/.ansible/tmp/ansible-local-9469DYcOp1/tmpupH2L2 TO /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.98-89367064769152/juniper_junos_config.py
+<10.49.122.141> PUT /homes/pranavs/.ansible/tmp/ansible-local-9469DYcOp1/tmpJXttwb TO /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.98-149566361278558/juniper_junos_config.py
+<10.49.113.196> EXEC /bin/sh -c 'chmod u+x /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.98-89367064769152/ /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.98-89367064769152/juniper_junos_config.py && sleep 0'
+<10.49.122.141> EXEC /bin/sh -c 'chmod u+x /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.98-149566361278558/ /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.98-149566361278558/juniper_junos_config.py && sleep 0'
+<10.49.113.196> EXEC /bin/sh -c '/usr/bin/python3 /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.98-89367064769152/juniper_junos_config.py && sleep 0'
+<10.49.122.141> EXEC /bin/sh -c '/usr/bin/python3 /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.98-149566361278558/juniper_junos_config.py && sleep 0'
+<10.49.122.141> EXEC /bin/sh -c 'rm -f -r /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.98-149566361278558/ > /dev/null 2>&1 && sleep 0'
+ok: [r3] => {
+    "changed": false,
+    "file": "tmp/r3.conf",
+    "invocation": {
+        "module_args": {
+            "attempts": null,
+            "baud": null,
+            "check": null,
+            "check_commit_wait": null,
+            "comment": null,
+            "commit": null,
+            "commit_empty_changes": false,
+            "config_mode": "exclusive",
+            "confirmed": null,
+            "console": null,
+            "cs_passwd": null,
+            "cs_user": null,
+            "dest": null,
+            "dest_dir": null,
+            "diff": null,
+            "diffs_file": null,
+            "filter": null,
+            "format": null,
+            "host": "10.49.122.141",
+            "ignore_warning": null,
+            "level": null,
+            "lines": null,
+            "load": "merge",
+            "logdir": null,
+            "logfile": null,
+            "mode": null,
+            "model": null,
+            "namespace": null,
+            "options": {},
+            "passwd": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+            "port": 22,
+            "remove_ns": null,
+            "retrieve": null,
+            "return_output": true,
+            "rollback": null,
+            "src": "tmp/r3.conf",
+            "ssh_config": null,
+            "ssh_private_key_file": null,
+            "template": null,
+            "timeout": 30,
+            "url": null,
+            "user": "regress",
+            "vars": null
+        }
+    },
+    "msg": "Configuration has been: opened, loaded, checked, diffed, closed."
+}
+<10.49.113.196> EXEC /bin/sh -c 'rm -f -r /homes/pranavs/.ansible/tmp/ansible-tmp-1632155077.98-89367064769152/ > /dev/null 2>&1 && sleep 0'
+ok: [r2] => {
+    "changed": false,
+    "file": "tmp/r2.conf",
+    "invocation": {
+        "module_args": {
+            "attempts": null,
+            "baud": null,
+            "check": null,
+            "check_commit_wait": null,
+            "comment": null,
+            "commit": null,
+            "commit_empty_changes": false,
+            "config_mode": "exclusive",
+            "confirmed": null,
+            "console": null,
+            "cs_passwd": null,
+            "cs_user": null,
+            "dest": null,
+            "dest_dir": null,
+            "diff": null,
+            "diffs_file": null,
+            "filter": null,
+            "format": null,
+            "host": "10.49.113.196",
+            "ignore_warning": null,
+            "level": null,
+            "lines": null,
+            "load": "merge",
+            "logdir": null,
+            "logfile": null,
+            "mode": null,
+            "model": null,
+            "namespace": null,
+            "options": {},
+            "passwd": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER",
+            "port": 22,
+            "remove_ns": null,
+            "retrieve": null,
+            "return_output": true,
+            "rollback": null,
+            "src": "tmp/r2.conf",
+            "ssh_config": null,
+            "ssh_private_key_file": null,
+            "template": null,
+            "timeout": 30,
+            "url": null,
+            "user": "regress",
+            "vars": null
+        }
+    },
+    "msg": "Configuration has been: opened, loaded, checked, diffed, closed."
+}
+
+TASK [Print the response] *****************************************************************************************************************************************************************************
+task path: /homes/pranavs/segment-routing/apply-bgp/apply-bgp.yaml:37
+ok: [r2] => {
+    "response.diff_lines": "VARIABLE IS NOT DEFINED!: 'dict object' has no attribute 'diff_lines'"
+}
+ok: [r3] => {
+    "response.diff_lines": "VARIABLE IS NOT DEFINED!: 'dict object' has no attribute 'diff_lines'"
+}
+META: ran handlers
+META: ran handlers
+
+PLAY RECAP ********************************************************************************************************************************************************************************************
+r2                         : ok=4    changed=0    unreachable=0    failed=0
+r3                         : ok=3    changed=0    unreachable=0    failed=0

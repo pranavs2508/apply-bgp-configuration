@@ -1,0 +1,66 @@
+groups {
+    policies {
+        logical-systems {
+            <*> {
+                policy-options {
+                    policy-statement nhs {
+                        then {
+                            next-hop self;
+                            accept;
+                        }
+                    }
+                    policy-statement lb {
+                        then {
+                            load-balance per-packet;
+                            accept;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+apply-groups policies;
+logical-systems {
+    {%- for ls in logical_systems %}
+    {{ ls.name }} {
+        routing-options {
+            forwarding-table {
+            export lb;
+            }
+            autonomous-system 8000;
+        }
+        protocols {
+            bgp {
+                group pe {
+                    type internal;
+                    export nhs;
+                    neighbor 192.168.0.3 {
+                        local-address {{ ls.ip }};
+                        family inet {
+                            unicast;
+                        }
+                        family inet-vpn {
+                            unicast;
+                        }
+                        family inet6 {
+                            labeled-unicast {
+                                explicit-null;
+                            }
+                        }
+                        family l2vpn {
+                            signaling;
+                        }
+                        family evpn {
+                            signaling;
+                        }
+                        family inet-mvpn {
+                            signaling;
+                        }
+                    }
+                }
+            }
+         }
+    }
+    {%- endfor %}
+}

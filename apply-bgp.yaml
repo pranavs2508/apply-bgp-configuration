@@ -1,0 +1,39 @@
+---
+- name: Apply BGP Configuration to logical systems
+  hosts: all
+  roles:
+    - Juniper.junos
+  connection: local
+  gather_facts: no
+
+  vars:
+    config_dir: "tmp"
+    config_filename: "{{ config_dir }}/{{ inventory_hostname }}.conf"
+
+  tasks:
+    - name: Confirm/Create device configuration directory
+      file:
+          path: "{{ config_dir }}"
+          state: directory
+      run_once: yes
+      delegate_to: localhost
+
+    - name: Build Configuration
+      template: src="bgp.j2" dest={{ config_filename }}
+
+
+    - name: Apply BGP configuration
+      juniper_junos_config:
+        provider:
+          host: "{{ ansible_host }}"
+          port: 22
+          user: regress
+          passwd: MaRtInI
+        load: "merge"
+        src: "{{ config_filename }}"
+        logfile: log
+      register: response
+
+    - name: "Print the response"
+      debug:
+        var: response.diff_lines

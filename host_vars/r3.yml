@@ -1,0 +1,9 @@
+---
+  host_name: r3
+  logical_systems:
+    - name: lr7
+      ip: 192.168.0.7
+    - name: lr8
+      ip: 192.168.0.8
+    - name: lr9
+      ip: 192.168.0.9
